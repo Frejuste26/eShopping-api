@@ -1,0 +1,16 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "eShopping API",
+    "version": "1.0.0",
+    "description": "Documentation de l'API RESTful pour la plateforme eShopping."
+  },
+  "servers": [
+    {
+      "url": "/e-shopping-api/v1",
+      "description": "Serveur de développement"
+    }
+  ],
+  "paths": {},
+  "components": {}
+}

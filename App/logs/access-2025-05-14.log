@@ -1,0 +1,8 @@
+{"level":"http","message":"::1 - - [14/May/2025:14:46:44 +0000] \"GET /e-shopping-api/v1/products/ HTTP/1.1\" 500 1461 \"-\" \"-\"","timestamp":"2025-05-14T14:46:44.058Z"}
+{"level":"http","message":"::1 - - [14/May/2025:14:48:30 +0000] \"GET /e-shopping-api/v1/products HTTP/1.1\" 500 1461 \"-\" \"-\"","timestamp":"2025-05-14T14:48:30.329Z"}
+{"level":"http","message":"::1 - - [14/May/2025:14:51:43 +0000] \"GET /e-shopping-api/v1/products HTTP/1.1\" 500 1454 \"-\" \"-\"","timestamp":"2025-05-14T14:51:43.140Z"}
+{"level":"http","message":"::1 - - [14/May/2025:15:06:41 +0000] \"GET /e-shopping-api/v1/products HTTP/1.1\" 500 421 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2025-05-14T15:06:41.126Z"}
+{"level":"http","message":"::1 - - [14/May/2025:15:08:37 +0000] \"GET /e-shopping-api/v1/products?keyword=votreRecherche HTTP/1.1\" 500 449 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2025-05-14T15:08:37.110Z"}
+{"level":"http","message":"::1 - - [14/May/2025:15:09:48 +0000] \"GET /e-shopping-api/v1/products?keyword=votreRecherche HTTP/1.1\" 200 58 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2025-05-14T15:09:48.876Z"}
+{"contentLength":"58","duration":"302ms","ip":"::1","level":"http","message":"HTTP Access","method":"GET","referrer":"","status":200,"timestamp":"2025-05-14T15:09:48.883Z","url":"/e-shopping-api/v1/products?keyword=votreRecherche","userAgent":"PostmanRuntime/7.43.0"}
+{"level":"http","message":"::1 - - [14/May/2025:15:16:59 +0000] \"POST /e-shopping-api/v1/products HTTP/1.1\" 500 2034 \"-\" \"PostmanRuntime/7.43.0\"","timestamp":"2025-05-14T15:16:59.247Z"}

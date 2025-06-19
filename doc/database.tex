@@ -1,0 +1,142 @@
+L’architecture de la base de données pour une application e-commerce bien conçue doit être **relationnelle** (par exemple MySQL, PostgreSQL) ou **NoSQL** (MongoDB, DynamoDB), selon les besoins spécifiques. Une structure relationnelle est souvent préférée pour sa robustesse et sa capacité à gérer des relations complexes.
+
+Voici une **modélisation relationnelle** typique pour un site e-commerce.
+
+---
+
+### **1. Tables principales**
+
+#### **1.1. Utilisateurs (Users)**
+- `id` (PK) : Identifiant unique.
+- `email` : Adresse email unique.
+- `password` : Mot de passe crypté.
+- `name` : Nom de l'utilisateur.
+- `phone` : Numéro de téléphone.
+- `address` : Adresse par défaut (peut être une relation si plusieurs adresses).
+- `role` : Rôle (client, admin, etc.).
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **1.2. Produits (Products)**
+- `id` (PK) : Identifiant unique.
+- `name` : Nom du produit.
+- `description` : Description détaillée.
+- `price` : Prix unitaire.
+- `stock` : Quantité en stock.
+- `category_id` (FK) : Référence à la catégorie.
+- `brand_id` (FK) : Référence à la marque.
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **1.3. Catégories (Categories)**
+- `id` (PK) : Identifiant unique.
+- `name` : Nom de la catégorie.
+- `parent_id` (FK, nullable) : Référence pour les sous-catégories (auto-relation).
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **1.4. Marques (Brands)**
+- `id` (PK) : Identifiant unique.
+- `name` : Nom de la marque.
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **1.5. Commandes (Orders)**
+- `id` (PK) : Identifiant unique.
+- `user_id` (FK) : Référence à l'utilisateur.
+- `total_price` : Prix total de la commande.
+- `status` : Statut (en attente, payé, expédié, annulé, etc.).
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **1.6. Détails de commande (Order_Items)**
+- `id` (PK) : Identifiant unique.
+- `order_id` (FK) : Référence à la commande.
+- `product_id` (FK) : Référence au produit.
+- `quantity` : Quantité commandée.
+- `price` : Prix unitaire au moment de la commande.
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **1.7. Avis produits (Reviews)**
+- `id` (PK) : Identifiant unique.
+- `user_id` (FK) : Référence à l'utilisateur.
+- `product_id` (FK) : Référence au produit.
+- `rating` : Note donnée (1 à 5).
+- `comment` : Commentaire textuel.
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+### **2. Tables auxiliaires**
+
+#### **2.1. Adresses utilisateur (Addresses)**
+- `id` (PK) : Identifiant unique.
+- `user_id` (FK) : Référence à l'utilisateur.
+- `address_line_1` : Première ligne d'adresse.
+- `address_line_2` : Deuxième ligne (facultative).
+- `city` : Ville.
+- `postal_code` : Code postal.
+- `country` : Pays.
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **2.2. Codes promotionnels (Coupons)**
+- `id` (PK) : Identifiant unique.
+- `code` : Code promotionnel.
+- `discount_type` : Type de réduction (pourcentage ou montant fixe).
+- `discount_value` : Valeur de la réduction.
+- `expiry_date` : Date d'expiration.
+- `minimum_order_value` : Montant minimum pour appliquer le coupon.
+- `created_at` : Date de création.
+- `updated_at` : Date de dernière modification.
+
+---
+
+#### **2.3. Paiements (Payments)**
+- `id` (PK) : Identifiant unique.
+- `order_id` (FK) : Référence à la commande.
+- `payment_method` : Méthode de paiement (carte, PayPal, etc.).
+- `transaction_id` : Identifiant de la transaction (généré par le service de paiement).
+- `amount` : Montant payé.
+- `status` : Statut (réussi, échec, remboursé).
+- `created_at` : Date de création.
+
+---
+
+#### **2.4. Images des produits (Product_Images)**
+- `id` (PK) : Identifiant unique.
+- `product_id` (FK) : Référence au produit.
+- `url` : URL de l’image.
+- `is_primary` : Indique si c’est l’image principale.
+- `created_at` : Date de création.
+
+---
+
+### **3. Relations clés**
+1. **Users ↔ Orders** : Un utilisateur peut avoir plusieurs commandes.  
+2. **Orders ↔ Order_Items** : Une commande contient plusieurs produits.  
+3. **Products ↔ Categories** : Un produit appartient à une catégorie.  
+4. **Products ↔ Brands** : Un produit est associé à une marque.  
+5. **Products ↔ Reviews** : Un produit peut avoir plusieurs avis d'utilisateurs.  
+6. **Users ↔ Reviews** : Un utilisateur peut laisser plusieurs avis.  
+7. **Addresses ↔ Users** : Un utilisateur peut avoir plusieurs adresses.  
+
+---
+
+Cette architecture est évolutive et peut être adaptée aux besoins spécifiques (par exemple, ajout de gestion de stock avancée, abonnements, ou intégration avec des marketplaces).

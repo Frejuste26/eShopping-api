@@ -1,0 +1,28 @@
+{"level":"info","message":" API routes loaded","timestamp":"2025-05-17 13:54:42"}
+{"level":"warn","message":" Swagger documentation not loaded because swagger.json was not found or was invalid.","timestamp":"2025-05-17 13:54:42"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connecté à MongoDB","port":27017,"timestamp":"2025-05-17 13:54:42"}
+{"environment":"development","level":"info","message":" 🚀Server started on port 5080","pid":8116,"timestamp":"2025-05-17 13:54:42"}
+{"level":"info","message":" API routes loaded","timestamp":"2025-05-17 13:56:34"}
+{"level":"warn","message":" Swagger documentation not loaded because swagger.json was not found or was invalid.","timestamp":"2025-05-17 13:56:34"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connecté à MongoDB","port":27017,"timestamp":"2025-05-17 13:56:34"}
+{"environment":"development","level":"info","message":" 🚀Server started on port 5080","pid":14532,"timestamp":"2025-05-17 13:56:34"}
+{"level":"info","message":" API routes loaded","timestamp":"2025-05-17 13:57:16"}
+{"level":"warn","message":" Swagger documentation not loaded because swagger.json was not found or was invalid.","timestamp":"2025-05-17 13:57:16"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connecté à MongoDB","port":27017,"timestamp":"2025-05-17 13:57:17"}
+{"environment":"development","level":"info","message":" 🚀Server started on port 5080","pid":7508,"timestamp":"2025-05-17 13:57:17"}
+{"level":"info","message":" API routes loaded","timestamp":"2025-05-17 14:01:05"}
+{"level":"warn","message":" Swagger documentation not loaded because swagger.json was not found or was invalid.","timestamp":"2025-05-17 14:01:05"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connecté à MongoDB","port":27017,"timestamp":"2025-05-17 14:01:06"}
+{"environment":"development","level":"info","message":" 🚀Server started on port 5080","pid":11472,"timestamp":"2025-05-17 14:01:06"}
+{"level":"info","message":" API routes loaded","timestamp":"2025-05-17 15:02:53"}
+{"level":"warn","message":" Swagger documentation not loaded because swagger.json was not found or was invalid.","timestamp":"2025-05-17 15:02:53"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connecté à MongoDB","port":27017,"timestamp":"2025-05-17 15:02:54"}
+{"environment":"development","level":"info","message":" 🚀Server started on port 5080","pid":10200,"timestamp":"2025-05-17 15:02:54"}
+{"level":"info","message":"Pug view engine configured","timestamp":"2025-05-17 15:54:28"}
+{"level":"info","message":" API routes loaded","timestamp":"2025-05-17 15:54:29"}
+{"level":"warn","message":" Swagger documentation not loaded because swagger.json was not found or was invalid.","timestamp":"2025-05-17 15:54:29"}
+{"level":"info","message":" API documentation route /e-shopping-api/v1/doc configured","timestamp":"2025-05-17 15:54:29"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connecté à MongoDB","port":27017,"timestamp":"2025-05-17 15:54:29"}
+{"environment":"development","level":"info","message":" 🚀Server started on port 5080","pid":11408,"timestamp":"2025-05-17 15:54:29"}
+{"ip":"::1","level":"warn","message":"404 Not Found","method":"GET","path":"/favicon.ico","timestamp":"2025-05-17 15:57:06"}
+{"contentLength":"156","duration":"156ms","ip":"::1","level":"warn","message":"HTTP Warning","method":"GET","referrer":"","status":404,"timestamp":"2025-05-17 15:57:06","url":"/favicon.ico","userAgent":"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36"}

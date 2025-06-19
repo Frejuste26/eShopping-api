@@ -1,0 +1,25 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    style
+      include ./style.pug
+  body
+    table.body
+      tr
+        td
+          table.container
+            tr
+              td.header.brand
+                img(src='${url}/logo.png', alt='Logo')
+            tr
+              td.content
+                h1 Bonjour, #{firstName} !
+                p Bienvenue sur notre plateforme e-commerce. Nous sommes ravis de vous compter parmi nos utilisateurs.
+                p Pour commencer à explorer nos produits, veuillez cliquer sur le bouton ci-dessous :
+                table.button
+                  tr
+                    td
+                      a(href='${url}') Explorer les produits
+                p Si vous avez des questions, n’hésitez pas à nous contacter.
+                p L’équipe Ecommerce.

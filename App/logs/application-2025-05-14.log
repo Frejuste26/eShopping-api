@@ -1,0 +1,90 @@
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:29:38"}
+{"level":"warn","message":"MongoDB disconnected","timestamp":"2025-05-14 16:29:43"}
+{"error":"connect ECONNREFUSED ::1:27017","level":"error","message":"Application startup failed","stack":"MongooseServerSelectionError: connect ECONNREFUSED ::1:27017\n    at _handleConnectionErrors (C:\\Users\\Win11\\Documents\\Developpers\\NodeJS\\eShopping\\node_modules\\mongoose\\lib\\connection.js:1165:11)\n    at NativeConnection.openUri (C:\\Users\\Win11\\Documents\\Developpers\\NodeJS\\eShopping\\node_modules\\mongoose\\lib\\connection.js:1096:11)\n    at async Database.connect (file:///C:/Users/Win11/Documents/Developpers/NodeJS/eShopping/App/Config/database.js:51:13)\n    at async App.Launch (file:///C:/Users/Win11/Documents/Developpers/NodeJS/eShopping/App/app.js:115:13)","timestamp":"2025-05-14 16:29:43"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:31:50"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:31:50"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 8080","pid":15684,"timestamp":"2025-05-14 16:31:50"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:33:23"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:33:23"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 8080","pid":10020,"timestamp":"2025-05-14 16:33:23"}
+{"level":"info","message":"Received SIGINT, shutting down gracefully...","timestamp":"2025-05-14 16:33:31"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:33:58"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:33:58"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 8080","pid":2224,"timestamp":"2025-05-14 16:33:58"}
+{"level":"info","message":"Received SIGINT, shutting down gracefully...","timestamp":"2025-05-14 16:35:34"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:35:53"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:35:54"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":16020,"timestamp":"2025-05-14 16:35:54"}
+{"contentLength":1461,"duration":"98ms","ip":"::1","level":"error","message":"HTTP Error","method":"GET","referrer":"","status":500,"timestamp":"2025-05-14 16:46:44","url":"/e-shopping-api/v1/products/"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:47:37"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:47:37"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":7504,"timestamp":"2025-05-14 16:47:37"}
+{"contentLength":1461,"duration":"37ms","ip":"::1","level":"error","message":"HTTP Error","method":"GET","referrer":"","status":500,"timestamp":"2025-05-14 16:48:30","url":"/e-shopping-api/v1/products"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:49:39"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:49:39"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":14604,"timestamp":"2025-05-14 16:49:39"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:50:17"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:50:18"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":2244,"timestamp":"2025-05-14 16:50:18"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:50:45"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 16:50:51"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 16:50:51"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":4840,"timestamp":"2025-05-14 16:50:51"}
+{"contentLength":1454,"duration":"19ms","ip":"::1","level":"error","message":"HTTP Error","method":"GET","referrer":"","status":500,"timestamp":"2025-05-14 16:51:43","url":"/e-shopping-api/v1/products"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:02:15"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:02:16"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":3524,"timestamp":"2025-05-14 17:02:16"}
+{"contentLength":421,"duration":"337ms","ip":"::1","level":"error","message":"HTTP Error","method":"GET","referrer":"","status":500,"timestamp":"2025-05-14 17:06:41","url":"/e-shopping-api/v1/products","userAgent":"PostmanRuntime/7.43.0"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:07:52"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:07:53"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":4240,"timestamp":"2025-05-14 17:07:53"}
+{"contentLength":449,"duration":"100ms","ip":"::1","level":"error","message":"HTTP Error","method":"GET","referrer":"","status":500,"timestamp":"2025-05-14 17:08:37","url":"/e-shopping-api/v1/products?keyword=votreRecherche","userAgent":"PostmanRuntime/7.43.0"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:09:33"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:09:33"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":16788,"timestamp":"2025-05-14 17:09:33"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:13:44"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:13:45"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":16680,"timestamp":"2025-05-14 17:13:45"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:13:57"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:13:58"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":16204,"timestamp":"2025-05-14 17:13:58"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:14:14"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:14:14"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":10176,"timestamp":"2025-05-14 17:14:15"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:14:33"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:14:34"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":17248,"timestamp":"2025-05-14 17:14:34"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:14:49"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:14:49"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":14696,"timestamp":"2025-05-14 17:14:49"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:15:05"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:15:05"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":6644,"timestamp":"2025-05-14 17:15:05"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:15:13"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:15:14"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":13308,"timestamp":"2025-05-14 17:15:14"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:15:27"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:15:27"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":7640,"timestamp":"2025-05-14 17:15:27"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:15:38"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:15:38"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":4356,"timestamp":"2025-05-14 17:15:38"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:15:53"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:15:53"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":13872,"timestamp":"2025-05-14 17:15:53"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:16:50"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:16:51"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":12440,"timestamp":"2025-05-14 17:16:51"}
+{"contentLength":2034,"duration":"352ms","ip":"::1","level":"error","message":"HTTP Error","method":"POST","referrer":"","status":500,"timestamp":"2025-05-14 17:16:59","url":"/e-shopping-api/v1/products","userAgent":"PostmanRuntime/7.43.0"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:18:19"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:18:19"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":2268,"timestamp":"2025-05-14 17:18:19"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:32:33"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:32:34"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":7712,"timestamp":"2025-05-14 17:32:34"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:32:47"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:32:48"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":572,"timestamp":"2025-05-14 17:32:48"}
+{"level":"info","message":"API routes loaded","timestamp":"2025-05-14 17:33:53"}
+{"database":"eShopping","host":"localhost","level":"info","message":"Connected to MongoDB","port":27017,"timestamp":"2025-05-14 17:33:53"}
+{"environment":"development","level":"info","message":"🚀 Server started on port 5080","pid":15252,"timestamp":"2025-05-14 17:33:53"}

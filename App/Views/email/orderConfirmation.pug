@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    meta(charset='UTF-8')
+    style
+      include ./style.pug
+  body
+    table.body
+      tr
+        td
+          table.container
+            tr
+              td.header.brand
+                img(src='${url}/logo.png', alt='Logo')
+            tr
+              td.content
+                h1 Bonjour, #{firstName} !
+                p Nous vous remercions pour votre commande. Voici les détails de votre commande :
+                table.order-summary
+                  tr
+                    th Produit
+                    th Quantité
+                    th Prix
+                    th Total
+                  each item in order.items
+                    tr
+                      td #{item.product.name} - #{item.variant.name}
+                      td #{item.quantity}
+                      td #{item.price} €
+                      td #{item.quantity * item.price} €
+                  tr
+                    td(colspan='3') Sous-total
+                    td #{order.totalPrice - order.taxPrice - order.shippingPrice} €
+                  tr
+                    td(colspan='3') Frais de livraison
+                    td #{order.shippingPrice} €
+                  tr
+                    td(colspan='3') TVA
+                    td #{order.taxPrice} €
+                  tr
+                    td(colspan='3') Total
+                    td #{order.totalPrice} €
+                p Votre commande sera expédiée sous 24 heures. Vous pouvez suivre votre commande en cliquant sur le lien ci-dessous :
+                table.button
+                    tr
+                        td
+                            a(href='${url}') Suivre votre commande
+                p Si vous avez des questions, n’hésitez pas à nous contacter.
+                p L’équipe Ecommerce.
+
