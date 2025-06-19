@@ -55,6 +55,7 @@
 
 ## 🏗️ Structure du projet
 
+```Architecture
 📦 eShopping
 ┣ 📂 __tests__  # test unitaires
 ┣ 📂 App        # Dossier Application
@@ -75,7 +76,7 @@
 ┣ 📜 server.js
 ┣ 📜 swagger.json
 ┗ 📜 README.md
-
+```
 
 ---
 
