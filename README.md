@@ -91,7 +91,7 @@ Structure relationnelle pensée pour l’évolutivité :
 - `payments`: sécurité financière
 - `cart`: gestion en temps réel
 
-Un diagramme peut être consulté ici : [📄 database.pdf](./database.pdf) *(à générer)*
+Un diagramme peut être consulté ici : [📄 database.pdf](./doc/database.tex) *(à générer)*
 
 ---
 
