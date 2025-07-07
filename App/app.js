@@ -87,9 +87,23 @@ class App {
         logger.logger.debug('CORS middleware configured');
 
         // Logging
-        this.app.use(morgan('combined', {
-            stream: { write: (message) => logger.httpLogger.http(message.trim()) }
-        }));
+        // Ensure the logger and its methods are bound correctly for Morgan.
+        // The original { write: (message) => logger.httpLogger.http(message.trim()) } should be correct.
+        // The error "stream.write is not a function" is perplexing if logger.httpLogger.http is a valid function.
+        // This change explicitly assigns the arrow function to a 'write' property.
+        const morganStream = {
+            write: (messageString) => {
+                if (logger && logger.httpLogger && typeof logger.httpLogger.http === 'function') {
+                    logger.httpLogger.http(messageString.trim());
+                } else {
+                    // This console.error will show up in stdout if there's an issue with the logger setup itself
+                    console.error('[App.js] Morgan stream error: logger.httpLogger.http is not available or not a function.');
+                    // Optionally, you could fall back to console.log for the message itself
+                    // console.log(messageString.trim());
+                }
+            }
+        };
+        this.app.use(morgan('combined', { stream: morganStream }));
         this.app.use(logger.expressLogger());
         logger.logger.debug('Logging middlewares loaded');
 
