@@ -30,7 +30,7 @@ class User {
             // Valider les données de la requête
             const { error } = this.querySchema.validate(request.query);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
@@ -42,7 +42,7 @@ class User {
                 .paginate(resPerPage); // Passer resPerPage à paginate
 
             const users = await apiFeatures.query;
-            this.logger.info("Users retrieved successfully");
+            this.logger.logger.info("Users retrieved successfully");
             response.status(200).json({
                 success: true,
                 count: users.length,
@@ -66,10 +66,10 @@ class User {
         try {
             const user = await this.model.findById(request.params.id);
             if (!user) {
-                this.logger.error(`User not found with ID ${request.params.id}`);
+                this.logger.logger.error(`User not found with ID ${request.params.id}`);
                 return next(new ErrorResponse('Aucun utilisateur trouvé avec cet ID', 404));
             }
-            this.logger.info(`User retrieved successfully with ID ${request.params.id}`);
+            this.logger.logger.info(`User retrieved successfully with ID ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 user
@@ -90,10 +90,10 @@ class User {
         try {
             const user = await this.model.findByIdAndDelete(request.params.id);
             if (!user) {
-                this.logger.error(`User not found with ID ${request.params.id}`);
+                this.logger.logger.error(`User not found with ID ${request.params.id}`);
                 return next(new ErrorResponse('Aucun utilisateur trouvé avec cet ID', 404));
             }
-            this.logger.info(`User deleted successfully with ID ${request.params.id}`);
+            this.logger.logger.info(`User deleted successfully with ID ${request.params.id}`);
             response.status(204).json({
                 success: true,
                 data: null
@@ -117,10 +117,10 @@ class User {
                 runValidators: true,
             });
             if (!user) {
-                this.logger.error(`User not found with ID ${request.params.id}`);
+                this.logger.logger.error(`User not found with ID ${request.params.id}`);
                 return next(new ErrorResponse('Aucun utilisateur trouvé avec cet ID', 404));
             }
-            this.logger.info(`User updated successfully with ID ${request.params.id}`);
+            this.logger.logger.info(`User updated successfully with ID ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 user
@@ -138,7 +138,7 @@ class User {
      * @returns {void}
      */
     handleError(error, message, next) {
-        this.logger.error(message + ": ", error.message);
+        this.logger.logger.error(message + ": ", error.message);
         if (error.name === 'CastError') {
             next(new ErrorResponse('ID invalide', 400)); // Gérer spécifiquement les erreurs CastError
         } else if (error.name === 'ValidationError') {

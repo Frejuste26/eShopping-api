@@ -125,7 +125,7 @@ class Product {
             // Valider les données de la requête (query params)
             const { error: queryError } = this.querySchema.validate(request.query);
             if (queryError) {
-                this.logger.error("Validation Error (Query): ", queryError.details);
+                this.logger.logger.error("Validation Error (Query): ", queryError.details);
                 return next(new ErrorResponse(queryError.details[0].message, 400));
             }
 
@@ -137,7 +137,7 @@ class Product {
                 .paginate(resPerPage);
 
             const products = await apiFeatures.query;
-            this.logger.info("Products retrieved successfully");
+            this.logger.logger.info("Products retrieved successfully");
             response.status(200).json({
                 success: true,
                 count: products.length,
@@ -146,7 +146,7 @@ class Product {
                 products
             })
         } catch (error) {
-            this.logger.error("Error retrieving products: " + error.message);
+            this.logger.logger.error("Error retrieving products: " + error.message);
             next(new ErrorResponse("Error retrieving products", 500));
         }
     };
@@ -156,22 +156,22 @@ class Product {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const product = await this.model.findById(request.params.id);
             if (!product) {
-                this.logger.error(`Product not found with ID ${request.params.id}`);
+                this.logger.logger.error(`Product not found with ID ${request.params.id}`);
                 return next(new ErrorResponse('Aucun produit trouvé avec cet ID', 404));
             }
-            this.logger.info(`Product retrieved successfully with ID ${request.params.id}`);
+            this.logger.logger.info(`Product retrieved successfully with ID ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 product
             });
         } catch (error) {
-            this.logger.error("Error retrieving product: " + error.message);
+            this.logger.logger.error("Error retrieving product: " + error.message);
             next(new ErrorResponse("Error retrieving product", 500));
         }
     };
@@ -186,18 +186,18 @@ class Product {
             // Valider les données du corps de la requête
             const { error } = this.createSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error (Create Product Body): ", error.details);
+                this.logger.logger.error("Validation Error (Create Product Body): ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
             const product = await this.model.create(request.body);
-            this.logger.info(`Product created successfully with ID ${product._id}`);
+            this.logger.logger.info(`Product created successfully with ID ${product._id}`);
             response.status(201).json({
                 success: true,
                 product
             });
         } catch (error) {
-            this.logger.error("Error creating product: " + error.message);
+            this.logger.logger.error("Error creating product: " + error.message);
             next(new ErrorResponse("Error creating product", 500));
         }
     };
@@ -212,14 +212,14 @@ class Product {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             // Valider les données du corps de la requête
             const { error: bodyError } = this.updateSchema.validate(request.body);
             if (bodyError) {
-                this.logger.error("Validation Error (Update Product Body): ", bodyError.details);
+                this.logger.logger.error("Validation Error (Update Product Body): ", bodyError.details);
                 return next(new ErrorResponse(bodyError.details[0].message, 400));
             }
 
@@ -229,16 +229,16 @@ class Product {
                 useFindAndModify: false
             });
             if (!product) {
-                this.logger.error(`Product not found with ID ${request.params.id}`);
+                this.logger.logger.error(`Product not found with ID ${request.params.id}`);
                 return next(new ErrorResponse('Aucun produit trouvé avec cet ID', 404));
             }
-            this.logger.info(`Product updated successfully with ID ${request.params.id}`);
+            this.logger.logger.info(`Product updated successfully with ID ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 product
             });
         } catch (error) {
-            this.logger.error("Error updating product: " + error.message);
+            this.logger.logger.error("Error updating product: " + error.message);
             next(new ErrorResponse("Error updating product", 500));
         }
     };
@@ -248,22 +248,22 @@ class Product {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const product = await this.model.findByIdAndDelete(request.params.id);
             if (!product) {
-                this.logger.error(`Product not found with ID ${request.params.id}`);
+                this.logger.logger.error(`Product not found with ID ${request.params.id}`);
                 return next(new ErrorResponse('Aucun produit trouvé avec cet ID', 404));
             }
-            this.logger.info(`Product deleted successfully with ID ${request.params.id}`);
+            this.logger.logger.info(`Product deleted successfully with ID ${request.params.id}`);
             response.status(204).json({
                 success: true,
                 data: null
             });
         } catch (error) {
-            this.logger.error("Error deleting product: " + error.message);
+            this.logger.logger.error("Error deleting product: " + error.message);
             next(new ErrorResponse("Error deleting product", 500));
         }
     }

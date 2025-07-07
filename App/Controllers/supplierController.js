@@ -73,7 +73,7 @@ class Supplier {
             // Valider les données de la requête (query params)
             const { error: queryValidationError } = this.querySchema.validate(request.query);
             if (queryValidationError) {
-                this.logger.error("Validation Error (Query): ", queryValidationError.details);
+                this.logger.logger.error("Validation Error (Query): ", queryValidationError.details);
                 return next(new ErrorResponse(queryValidationError.details[0].message, 400));
             }
 
@@ -85,7 +85,7 @@ class Supplier {
                 .paginate(resPerPage); // Passer resPerPage à paginate
 
             const suppliers = await apiFeatures.query;
-            this.logger.info("Suppliers retrieved successfully");
+            this.logger.logger.info("Suppliers retrieved successfully");
             response.status(200).json({
                 success: true,
                 count: suppliers.length,
@@ -94,7 +94,7 @@ class Supplier {
                 suppliers
             });
         } catch (error) {
-            this.logger.error("Error retrieving suppliers: ", error);
+            this.logger.logger.error("Error retrieving suppliers: ", error);
             next(error);
         }
     }
@@ -111,22 +111,22 @@ class Supplier {
             // Valider l'ID de la requête
             const { error: idValidationError } = this.idSchema.validate(request.params);
             if (idValidationError) {
-                this.logger.error("Validation Error (ID): ", idValidationError.details);
+                this.logger.logger.error("Validation Error (ID): ", idValidationError.details);
                 return next(new ErrorResponse(idValidationError.details[0].message, 400));
             }
 
             const supplier = await this.model.findById(request.params.id);
             if (!supplier) {
-                this.logger.error(`Supplier not found with id ${request.params.id}`);
+                this.logger.logger.error(`Supplier not found with id ${request.params.id}`);
                 return next(new ErrorResponse('Aucun fournisseur trouvé avec cet ID', 404));
             }
-            this.logger.info(`Supplier retrieved successfully with id ${request.params.id}`);
+            this.logger.logger.info(`Supplier retrieved successfully with id ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 supplier
             });
         } catch (error) {
-            this.logger.error("Error retrieving supplier: ", error);
+            this.logger.logger.error("Error retrieving supplier: ", error);
             next(error);
         }
     }
@@ -148,18 +148,18 @@ class Supplier {
             // Valider les données du corps de la requête
             const { error: createValidationError } = this.createSchema.validate(request.body);
             if (createValidationError) {
-                this.logger.error("Validation Error (Create Supplier Body): ", createValidationError.details);
+                this.logger.logger.error("Validation Error (Create Supplier Body): ", createValidationError.details);
                 return next(new ErrorResponse(createValidationError.details[0].message, 400));
             }
 
             const supplier = await this.model.create(request.body);
-            this.logger.info(`Supplier created successfully with id ${supplier._id}`);
+            this.logger.logger.info(`Supplier created successfully with id ${supplier._id}`);
             response.status(201).json({
                 success: true,
                 supplier
             });
         } catch (error) {
-            this.logger.error("Error creating supplier: ", error);
+            this.logger.logger.error("Error creating supplier: ", error);
             next(error);
         }
     }
@@ -181,14 +181,14 @@ class Supplier {
             // Valider l'ID de la requête
             const { error: idValidationError } = this.idSchema.validate(request.params);
             if (idValidationError) {
-                this.logger.error("Validation Error (ID): ", idValidationError.details);
+                this.logger.logger.error("Validation Error (ID): ", idValidationError.details);
                 return next(new ErrorResponse(idValidationError.details[0].message, 400));
             }
 
             // Valider les données du corps de la requête
             const { error: bodyValidationError } = this.updateSchema.validate(request.body);
             if (bodyValidationError) {
-                this.logger.error("Validation Error (Update Supplier Body): ", bodyValidationError.details);
+                this.logger.logger.error("Validation Error (Update Supplier Body): ", bodyValidationError.details);
                 return next(new ErrorResponse(bodyValidationError.details[0].message, 400));
             }
 
@@ -197,16 +197,16 @@ class Supplier {
                 runValidators: true,
             });
             if (!supplier) {
-                this.logger.error(`Supplier not found with id ${request.params.id}`);
+                this.logger.logger.error(`Supplier not found with id ${request.params.id}`);
                 return next(new ErrorResponse('Aucun fournisseur trouvé avec cet ID', 404));
             }
-            this.logger.info(`Supplier updated successfully with id ${request.params.id}`);
+            this.logger.logger.info(`Supplier updated successfully with id ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 supplier
             });
         } catch (error) {
-            this.logger.error("Error updating supplier: ", error);
+            this.logger.logger.error("Error updating supplier: ", error);
             next(error);
         }
     }
@@ -223,21 +223,21 @@ class Supplier {
             // Valider l'ID de la requête
             const { error: idValidationError } = this.idSchema.validate(request.params);
             if (idValidationError) {
-                this.logger.error("Validation Error (ID): ", idValidationError.details);
+                this.logger.logger.error("Validation Error (ID): ", idValidationError.details);
                 return next(new ErrorResponse(idValidationError.details[0].message, 400));
             }
 
             const supplier = await this.model.findByIdAndDelete(request.params.id);
             if (!supplier) {
-                this.logger.error(`Supplier not found with id ${request.params.id}`);
+                this.logger.logger.error(`Supplier not found with id ${request.params.id}`);
                 return next(new ErrorResponse('Aucun fournisseur trouvé avec cet ID', 404));
             }
-            this.logger.info(`Supplier deleted successfully with id ${request.params.id}`);
+            this.logger.logger.info(`Supplier deleted successfully with id ${request.params.id}`);
             response.status(204).json({ // Utiliser le code d'état 204
                 success: true,
             });
         } catch (error) {
-            this.logger.error("Error deleting supplier: ", error);
+            this.logger.logger.error("Error deleting supplier: ", error);
             next(error);
         }
     }

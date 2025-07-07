@@ -53,12 +53,6 @@ class Authentication {
         })
     });
 
-    // Validation schema pour la connexion
-    loginSchema = Joi.object({
-        email: Joi.string().email().required(),
-        password: Joi.string().required(),
-    });
-
     /**
      * Enregistre un nouvel utilisateur.
      * @param {Object} request - L'objet de requête Express.
@@ -71,20 +65,20 @@ class Authentication {
             // Valider les données de la requête
             const { error } = this.registerSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
             const user = await this.userModel.create(request.body);
             const token = this.authMiddleware.generateToken(user._id);
-            this.logger.info("User registered successfully");
+            this.logger.logger.info("User registered successfully");
             response.status(201).json({
                 success: true,
                 token,
                 user
             });
         } catch (err) {
-            this.logger.error("Error while registering user", err);
+            this.logger.logger.error("Error while registering user", err);
             next(err);
         }
     }
@@ -101,30 +95,30 @@ class Authentication {
             // Valider les données de la requête
             const { error } = this.loginSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
             const { email, password } = request.body;
             const user = await this.userModel.findOne({ email }).select("+password");
             if (!user) {
-                this.logger.error("Invalid credentials");
+                this.logger.logger.error("Invalid credentials");
                 return next(new ErrorResponse("Invalid credentials", 401));
             }
             const isMatch = await user.matchPassword(password);
             if (!isMatch) {
-                this.logger.error("Invalid credentials");
+                this.logger.logger.error("Invalid credentials");
                 return next(new ErrorResponse("Invalid credentials", 401));
             }
             const token = this.authMiddleware.generateToken(user._id);
-            this.logger.info("User logged in successfully");
+            this.logger.logger.info("User logged in successfully");
             response.status(200).json({
                 success: true,
                 token,
                 user
             });
         } catch (err) {
-            this.logger.error("Error while logging in user", err);
+            this.logger.logger.error("Error while logging in user", err);
             next(err);
         }
     }
@@ -141,13 +135,13 @@ class Authentication {
             // Valider les données de la requête
             const { error: bodyError } = this.forgotPasswordSchema.validate(request.body);
             if (bodyError) {
-                this.logger.error("Validation Error (Forgot Password Body): ", bodyError.details);
+                this.logger.logger.error("Validation Error (Forgot Password Body): ", bodyError.details);
                 return next(new ErrorResponse(bodyError.details[0].message, 400));
             }
 
             const user = await this.userModel.findOne({ email: request.body.email });
             if (!user) {
-                this.logger.error("No user with that email");
+                this.logger.logger.error("No user with that email");
                 return next(new ErrorResponse("No user with that email", 404));
             }
             const resetToken = user.getResetPasswordToken();
@@ -158,7 +152,7 @@ class Authentication {
                 await user.save({ validateBeforeSave: false, session }); // Pass the session here
                 const resetUrl = `${request.protocol}://${request.get("host")}/api/v1/auth/resetpassword/${resetToken}`;
                 const message = `You are receiving this email because you (or someone else) has requested the reset of a password. Please make a PUT request to: \n\n ${resetUrl}`;
-                this.logger.info("Data passed to mailer.send:", {
+                this.logger.logger.info("Data passed to mailer.send:", {
                     email: user.email,
                     subject: "Password Reset Token",
                     message: message
@@ -169,7 +163,7 @@ class Authentication {
                     .send('reset', 'Password Reset Token', {
                         message: message
                     });
-                this.logger.info("Email sent");
+                this.logger.logger.info("Email sent");
                 await session.commitTransaction(); // Commit the transaction
                 response.status(200).json({
                     success: true,
@@ -178,13 +172,13 @@ class Authentication {
             } catch (err) {
                 // If there's an error, abort the transaction and undo any changes that might have happened
                 await session.abortTransaction();
-                this.logger.error("Error sending email or saving token", err);
+                this.logger.logger.error("Error sending email or saving token", err);
                 return next(new ErrorResponse("Email could not be sent", 500)); // Keep the 500 status
             } finally {
                 session.endSession(); // Clean up the session
             }
         } catch (err) {
-            this.logger.error("Error while handling forgot password", err);
+            this.logger.logger.error("Error while handling forgot password", err);
             next(err);
         }
     }

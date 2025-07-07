@@ -77,7 +77,7 @@ class ProductVariantController {
             // Valider les données de la requête
             const { error } = this.querySchema.validate(request.query);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
@@ -89,7 +89,7 @@ class ProductVariantController {
                 .paginate(resPerPage);
 
             const productVariants = await apiFeatures.query;
-            this.logger.info(`Product Variants fetched successfully`);
+            this.logger.logger.info(`Product Variants fetched successfully`);
             response.status(200).json({
                 success: true,
                 count: productVariants.length,
@@ -98,7 +98,7 @@ class ProductVariantController {
                 productVariants
             });
         } catch (error) {
-            this.logger.error("Error retrieving product variants: ", error);
+            this.logger.logger.error("Error retrieving product variants: ", error);
             next(error);
         }
     };
@@ -115,22 +115,22 @@ class ProductVariantController {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const productVariant = await this.model.findById(request.params.id);
             if (!productVariant) {
-                this.logger.error(`Product Variant not found with id of ${request.params.id}`);
+                this.logger.logger.error(`Product Variant not found with id of ${request.params.id}`);
                 return next(new ErrorResponse(`Product Variant not found with id of ${request.params.id}`, 404));
             }
-            this.logger.info(`Product Variant fetched successfully`);
+            this.logger.logger.info(`Product Variant fetched successfully`);
             response.status(200).json({
                 success: true,
                 productVariant
             });
         } catch (error) {
-            this.logger.error("Error retrieving product variant: ", error);
+            this.logger.logger.error("Error retrieving product variant: ", error);
             next(error);
         }
     }
@@ -147,18 +147,18 @@ class ProductVariantController {
             // Valider les données de la requête
             const { error } = this.createSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
             const productVariant = await this.model.create(request.body);
-            this.logger.info(`Product Variant created successfully`);
+            this.logger.logger.info(`Product Variant created successfully`);
             response.status(201).json({
                 success: true,
                 productVariant
             });
         } catch (error) {
-            this.logger.error("Error creating product variant: ", error);
+            this.logger.logger.error("Error creating product variant: ", error);
             next(error);
         }
     };
@@ -175,14 +175,14 @@ class ProductVariantController {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             // Valider les données de la requête
             const { error } = this.updateSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
             const productVariant = await this.model.findByIdAndUpdate(request.params.id, request.body, {
@@ -190,16 +190,16 @@ class ProductVariantController {
                 runValidators: true,
             });
             if (!productVariant) {
-                this.logger.error(`Product Variant not found with id of ${request.params.id}`);
+                this.logger.logger.error(`Product Variant not found with id of ${request.params.id}`);
                 return next(new ErrorResponse(`Product Variant not found with id of ${request.params.id}`, 404));
             }
-            this.logger.info(`Product Variant updated successfully`);
+            this.logger.logger.info(`Product Variant updated successfully`);
             response.status(200).json({
                 success: true,
                 productVariant
             });
         } catch (error) {
-            this.logger.error("Error updating product variant: ", error);
+            this.logger.logger.error("Error updating product variant: ", error);
             next(error);
         }
     };
@@ -216,19 +216,19 @@ class ProductVariantController {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const productVariant = await this.model.findByIdAndDelete(request.params.id);
             if (!productVariant) {
-                this.logger.error(`Product Variant not found with id of ${request.params.id}`);
+                this.logger.logger.error(`Product Variant not found with id of ${request.params.id}`);
                 return next(new ErrorResponse(`Product Variant not found with id of ${request.params.id}`, 404));
             }
-            this.logger.info(`Product Variant deleted successfully`);
+            this.logger.logger.info(`Product Variant deleted successfully`);
             response.status(204).json({ success: true }); // Utiliser le code 204
         } catch (error) {
-            this.logger.error("Error deleting product variant: ", error);
+            this.logger.logger.error("Error deleting product variant: ", error);
             next(error);
         }
     };
