@@ -96,7 +96,7 @@ class Order {
             // Valider les données de la requête (query params)
             const { error: queryError } = this.querySchema.validate(request.query);
             if (queryError) {
-                this.logger.error("Validation Error (Query): ", queryError.details);
+                this.logger.logger.error("Validation Error (Query): ", queryError.details);
                 return next(new ErrorResponse(queryError.details[0].message, 400));
             }
 
@@ -108,7 +108,7 @@ class Order {
                 .paginate();
 
             const orders = await apiFeatures.query;
-            this.logger.info("Orders retrieved successfully");
+            this.logger.logger.info("Orders retrieved successfully");
             response.status(200).json({
                 success: true,
                 count: orders.length,
@@ -117,7 +117,7 @@ class Order {
                 orders
             });
         } catch (error) {
-            this.logger.error("Error retrieving orders: " + error.message);
+            this.logger.logger.error("Error retrieving orders: " + error.message);
             next(new ErrorResponse("Error retrieving orders", 500));
         }
     };
@@ -127,22 +127,22 @@ class Order {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const order = await this.model.findById(request.params.id);
             if (!order) {
-                this.logger.error("Order not found");
+                this.logger.logger.error("Order not found");
                 return next(new ErrorResponse("Order not found", 404));
             }
-            this.logger.info("Order retrieved successfully");
+            this.logger.logger.info("Order retrieved successfully");
             response.status(200).json({
                 success: true,
                 order
             });
         } catch (error) {
-            this.logger.error("Error retrieving order: " + error.message);
+            this.logger.logger.error("Error retrieving order: " + error.message);
             next(new ErrorResponse("Error retrieving order", 500));
         }
     };
@@ -152,18 +152,18 @@ class Order {
             // Valider les données du corps de la requête
             const { error } = this.createSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error (Create Order Body): ", error.details);
+                this.logger.logger.error("Validation Error (Create Order Body): ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
             const order = await this.model.create(request.body);
-            this.logger.info("Order created successfully");
+            this.logger.logger.info("Order created successfully");
             response.status(201).json({
                 success: true,
                 order
             });
         } catch (error) {
-            this.logger.error("Error creating order: " + error.message);
+            this.logger.logger.error("Error creating order: " + error.message);
             next(new ErrorResponse("Error creating order", 500));
         }
     };
@@ -173,14 +173,14 @@ class Order {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             // Valider les données du corps de la requête
             const { error: bodyError } = this.updateSchema.validate(request.body);
             if (bodyError) {
-                this.logger.error("Validation Error (Update Order Body): ", bodyError.details);
+                this.logger.logger.error("Validation Error (Update Order Body): ", bodyError.details);
                 return next(new ErrorResponse(bodyError.details[0].message, 400));
             }
 
@@ -190,16 +190,16 @@ class Order {
                 useFindAndModify: false
             });
             if (!order) {
-                this.logger.error("Order not found");
+                this.logger.logger.error("Order not found");
                 return next(new ErrorResponse("Order not found", 404));
             }
-            this.logger.info("Order updated successfully");
+            this.logger.logger.info("Order updated successfully");
             response.status(200).json({
                 success: true,
                 order
             });
         } catch(error) {
-            this.logger.error("Error updating order: " + error.message);
+            this.logger.logger.error("Error updating order: " + error.message);
             next(new ErrorResponse("Error updating order", 500));
         }
     };
@@ -209,22 +209,22 @@ class Order {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const order = await this.model.findByIdAndDelete(request.params.id);
             if (!order) {
-                this.logger.error("Order not found");
+                this.logger.logger.error("Order not found");
                 return next(new ErrorResponse("Order not found", 404));
             }
-            this.logger.info("Order deleted successfully");
+            this.logger.logger.info("Order deleted successfully");
             response.status(200).json({
                 success: true,
                 message: "Order deleted successfully"
             });
         } catch(error) {
-            this.logger.error("Error deleting order: " + error.message);
+            this.logger.logger.error("Error deleting order: " + error.message);
             next(new ErrorResponse("Error deleting order", 500));
         }
     }

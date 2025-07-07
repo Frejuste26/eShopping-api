@@ -133,7 +133,7 @@ class Promotion {
             // Valider les données de la requête
             const { error } = this.querySchema.validate(request.query);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
@@ -145,7 +145,7 @@ class Promotion {
                 .paginate(resPerPage); // Passer resPerPage à paginate
 
             const promotions = await apiFeatures.query;
-            this.logger.info("Promotions retrieved successfully");
+            this.logger.logger.info("Promotions retrieved successfully");
             response.status(200).json({
                 success: true,
                 count: promotions.length,
@@ -170,16 +170,16 @@ class Promotion {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const promotion = await this.model.findById(request.params.id);
             if (!promotion) {
-                this.logger.error("Promotion not found");
+                this.logger.logger.error("Promotion not found");
                 return next(new ErrorResponse("Promotion not found", 404));
             }
-            this.logger.info("Promotion retrieved successfully");
+            this.logger.logger.info("Promotion retrieved successfully");
             response.status(200).json({
                 success: true,
                 promotion
@@ -201,12 +201,12 @@ class Promotion {
             // Valider les données du corps de la requête
             const { error } = this.createSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error (Create Promotion Body): ", error.details);
+                this.logger.logger.error("Validation Error (Create Promotion Body): ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
             const promotion = await this.model.create(request.body);
-            this.logger.info("Promotion created successfully");
+            this.logger.logger.info("Promotion created successfully");
             response.status(201).json({
                 success: true,
                 promotion
@@ -228,14 +228,14 @@ class Promotion {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             // Valider les données du corps de la requête
             const { error: bodyError } = this.updateSchema.validate(request.body);
             if (bodyError) {
-                this.logger.error("Validation Error (Update Promotion Body): ", bodyError.details);
+                this.logger.logger.error("Validation Error (Update Promotion Body): ", bodyError.details);
                 return next(new ErrorResponse(bodyError.details[0].message, 400));
             }
 
@@ -244,10 +244,10 @@ class Promotion {
                 runValidators: true,
             });
             if (!promotion) {
-                this.logger.error("Promotion not found");
+                this.logger.logger.error("Promotion not found");
                 return next(new ErrorResponse("Promotion not found", 404));
             }
-            this.logger.info("Promotion updated successfully");
+            this.logger.logger.info("Promotion updated successfully");
             response.status(200).json({
                 success: true,
                 promotion
@@ -269,16 +269,16 @@ class Promotion {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const promotion = await this.model.findByIdAndDelete(request.params.id);
             if (!promotion) {
-                this.logger.error("Promotion not found");
+                this.logger.logger.error("Promotion not found");
                 return next(new ErrorResponse("Promotion not found", 404));
             }
-            this.logger.info("Promotion deleted successfully");
+            this.logger.logger.error("Promotion deleted successfully");
             response.status(204).json({ // Utiliser le code d'état 204
                 success: true,
             });
@@ -295,7 +295,7 @@ class Promotion {
      * @returns {void}
      */
     handleError(error, message, next) {
-        this.logger.error(message + ": ", error.message);
+        this.logger.logger.error(message + ": ", error.message);
         if (error.name === 'CastError') {
             next(new ErrorResponse('ID invalide', 400)); // Gérer spécifiquement les erreurs CastError
         } else if (error.name === 'ValidationError') {

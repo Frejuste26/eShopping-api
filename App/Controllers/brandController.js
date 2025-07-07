@@ -71,7 +71,7 @@ class Brand {
             // Valider les données de la requête
             const { error: queryError } = this.querySchema.validate(request.query);
             if (queryError) {
-                this.logger.error("Validation Error (Query): ", queryError.details);
+                this.logger.logger.error("Validation Error (Query): ", queryError.details);
                 return next(new ErrorResponse(queryError.details[0].message, 400));
             }
 
@@ -82,7 +82,7 @@ class Brand {
                 .filter()
                .paginate();
             const brands = await apiFeatures.query;
-            this.logger.info("Brands retrieved successfully");
+            this.logger.logger.info("Brands retrieved successfully");
             response.status(200).json({
                 success: true,
                 count: brands.length,
@@ -91,7 +91,7 @@ class Brand {
                 brands
             });
         } catch (error) {
-            this.logger.error("Error retrieving brands: " + error.message);
+            this.logger.logger.error("Error retrieving brands: " + error.message);
             return next(new ErrorResponse("Error retrieving brands", 500));
         }
     };
@@ -101,22 +101,22 @@ class Brand {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const brand = await this.model.findById(request.params.id);
             if (!brand) {
-                this.logger.error(`Brand not found with id of ${request.params.id}`);
+                this.logger.logger.error(`Brand not found with id of ${request.params.id}`);
                 return next(new ErrorResponse(`Brand not found with id of ${request.params.id}`, 404));
             }
-            this.logger.info(`Brand retrieved successfully with id ${request.params.id}`);
+            this.logger.logger.info(`Brand retrieved successfully with id ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 brand
             });
         } catch (error) {
-            this.logger.error("Error retrieving brand: " + error.message);
+            this.logger.logger.error("Error retrieving brand: " + error.message);
             return next(new ErrorResponse("Error retrieving brand", 500));
         }
     };
@@ -131,18 +131,18 @@ class Brand {
             // Valider les données de la requête
             const { error } = this.createSchema.validate(request.body);
             if (error) {
-                this.logger.error("Validation Error: ", error.details);
+                this.logger.logger.error("Validation Error: ", error.details);
                 return next(new ErrorResponse(error.details[0].message, 400));
             }
 
             const brand = await this.model.create(request.body);
-            this.logger.info(`Brand created successfully with id ${brand._id}`);
+            this.logger.logger.info(`Brand created successfully with id ${brand._id}`);
             response.status(201).json({
                 success: true,
                 brand
             });
         } catch (error) {
-            this.logger.error("Error creating brand: " + error.message);
+            this.logger.logger.error("Error creating brand: " + error.message);
             return next(new ErrorResponse("Error creating brand", 500));
         }
     };
@@ -157,14 +157,14 @@ class Brand {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             // Valider les données de la requête
             const { error: bodyError } = this.updateSchema.validate(request.body);
             if (bodyError) {
-                this.logger.error("Validation Error (Body): ", bodyError.details);
+                this.logger.logger.error("Validation Error (Body): ", bodyError.details);
                 return next(new ErrorResponse(bodyError.details[0].message, 400));
             }
 
@@ -174,16 +174,16 @@ class Brand {
                 useFindAndModify: false
             });
             if (!brand) {
-                this.logger.error(`Brand not found with id of ${request.params.id}`);
+                this.logger.logger.error(`Brand not found with id of ${request.params.id}`);
                 return next(new ErrorResponse(`Brand not found with id of ${request.params.id}`, 404));
             }
-            this.logger.info(`Brand updated successfully with id ${request.params.id}`);
+            this.logger.logger.info(`Brand updated successfully with id ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 brand
             });
         } catch (error) {
-            this.logger.error("Error updating brand: " + error.message);
+            this.logger.logger.error("Error updating brand: " + error.message);
             return next(new ErrorResponse("Error updating brand", 500));
         }
     };
@@ -193,22 +193,22 @@ class Brand {
             // Valider l'ID de la requête
             const { error: idError } = this.idSchema.validate(request.params);
             if (idError) {
-                this.logger.error("Validation Error (ID): ", idError.details);
+                this.logger.logger.error("Validation Error (ID): ", idError.details);
                 return next(new ErrorResponse(idError.details[0].message, 400));
             }
 
             const brand = await this.model.findByIdAndDelete(request.params.id);
             if (!brand) {
-                this.logger.error(`Brand not found with id of ${request.params.id}`);
+                this.logger.logger.error(`Brand not found with id of ${request.params.id}`);
                 return next(new ErrorResponse(`Brand not found with id of ${request.params.id}`, 404));
             }
-            this.logger.info(`Brand deleted successfully with id ${request.params.id}`);
+            this.logger.logger.info(`Brand deleted successfully with id ${request.params.id}`);
             response.status(200).json({
                 success: true,
                 message: 'Brand deleted'
             });
         } catch (error) {
-            this.logger.error("Error deleting brand: " + error.message);
+            this.logger.logger.error("Error deleting brand: " + error.message);
             return next(new ErrorResponse("Error deleting brand", 500));
         }
     };
